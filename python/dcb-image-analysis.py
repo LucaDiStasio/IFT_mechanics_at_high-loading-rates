@@ -36,6 +36,18 @@ import cv2
 from matplotlib import pyplot as plt
 
 img = cv2.imread('LAM365-1-s-0329_0.tif',0)
-plt.imshow(img, cmap = 'gray', interpolation = 'bicubic')
-plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+ret,th = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
+#th = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
+
+surf = cv2.SURF(30000)
+kp, des = surf.detectAndCompute(th,None)
+print len(kp)
+img2 = cv2.drawKeypoints(th,kp,None,(255,0,0),4)
+
+fig, (ax1, ax2) = plt.subplots(1,2)
+ax1.imshow(img, cmap = 'gray', interpolation = 'bicubic')
+#ax2.imshow(th, cmap = 'gray')
+ax2.imshow(img2)
+#plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+plt.tight_layout()
 plt.show()
