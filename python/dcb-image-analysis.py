@@ -36,6 +36,9 @@ import cv2
 from matplotlib import pyplot as plt
 
 img = cv2.imread('LAM365-1-s-0329_0.tif',0)
+height,width = img.shape
+
+#cv2.imwrite('trial.png',img)
 ret,th = cv2.threshold(img,127,255,cv2.THRESH_BINARY)
 #th = cv2.adaptiveThreshold(img,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,11,2)
 
@@ -43,6 +46,8 @@ surf = cv2.SURF(30000)
 kp, des = surf.detectAndCompute(th,None)
 print len(kp)
 img2 = cv2.drawKeypoints(th,kp,None,(255,0,0),4)
+
+#cv2.line(img,(0,0),(width,height),(0,0,255),5)
 
 fig, (ax1, ax2) = plt.subplots(1,2)
 ax1.imshow(img, cmap = 'gray', interpolation = 'bicubic')
