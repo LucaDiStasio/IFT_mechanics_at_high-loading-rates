@@ -47,12 +47,19 @@ kp, des = surf.detectAndCompute(th,None)
 print len(kp)
 img2 = cv2.drawKeypoints(th,kp,None,(255,0,0),4)
 
+edges = cv2.Canny(img,100,200)
+
 #cv2.line(img,(0,0),(width,height),(0,0,255),5)
 
-fig, (ax1, ax2) = plt.subplots(1,2)
+#imageTitle = 'Double Cantilever Beam Test'
+
+#cv2.namedWindow(imageTitle)
+
+fig, (ax1, ax2, ax3) = plt.subplots(1,3)
 ax1.imshow(img, cmap = 'gray', interpolation = 'bicubic')
 #ax2.imshow(th, cmap = 'gray')
 ax2.imshow(img2)
+ax3.imshow(edges, cmap='gray')
 #plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
 plt.tight_layout()
 plt.show()
