@@ -73,8 +73,10 @@ cv2.rectangle(img,top_left, bottom_right, 255, 4)
 cv2.rectangle(img,top_left2, bottom_right2, 255, 4)
 cv2.rectangle(img,top_left3, bottom_right3, 255, 4)
 
-plt.subplot(121),plt.imshow(img2,cmap = 'gray')
-plt.title('Original'), plt.xticks([]), plt.yticks([])
+cropImage = img2[0.5*(top_left2[1]+bottom_right2[1]):0.5*(top_left[1]+bottom_right[1]),:]
+
+plt.subplot(121),plt.imshow(cropImage,cmap = 'gray')
+plt.title('Cropped'), plt.xticks([]), plt.yticks([])
 plt.subplot(122),plt.imshow(img,cmap = 'gray')
 plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
 
