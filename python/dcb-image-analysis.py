@@ -73,14 +73,33 @@ cv2.rectangle(img,top_left, bottom_right, 255, 4)
 cv2.rectangle(img,top_left2, bottom_right2, 255, 4)
 cv2.rectangle(img,top_left3, bottom_right3, 255, 4)
 
-cropImage = img2[0.5*(top_left2[1]+bottom_right2[1]):0.5*(top_left[1]+bottom_right[1]),:]
+upperArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left3[1]+bottom_right3[1]))),top_left2[0]:int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
 
-plt.subplot(121),plt.imshow(cropImage,cmap = 'gray')
-plt.title('Cropped'), plt.xticks([]), plt.yticks([])
-plt.subplot(122),plt.imshow(img,cmap = 'gray')
-plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+lowerArm = img2[int(np.floor(0.5*(top_left3[1]+bottom_right3[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),top_left[0]:int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
 
+rearArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),int(np.ceil(0.5*(top_left3[0]+bottom_right3[0]))):]
 
+plt.subplot(311)
+plt.imshow(upperArm,cmap = 'gray')
+plt.title('Upper arm')
+plt.xticks([])
+plt.yticks([])
+plt.subplot(312)
+plt.imshow(lowerArm,cmap = 'gray')
+plt.title('Lower arm')
+plt.xticks([])
+plt.yticks([])
+plt.subplot(313)
+plt.imshow(rearArm,cmap = 'gray')
+plt.title('Rear arm')
+plt.xticks([])
+plt.yticks([])
+
+plt.figure()
+plt.imshow(img,cmap = 'gray')
+plt.title('Detected Points')
+plt.xticks([])
+plt.yticks([])
 plt.show()
 
 #cv2.imwrite('trial.png',img)
