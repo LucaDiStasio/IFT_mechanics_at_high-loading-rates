@@ -75,23 +75,44 @@ cv2.rectangle(img,top_left3, bottom_right3, 255, 4)
 
 upperArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left3[1]+bottom_right3[1]))),int(np.floor(0.5*(top_left2[0]+bottom_right2[0]))):int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
 
+ret,upperArmBin = cv2.threshold(upperArm,127,255,cv2.THRESH_BINARY)
+
 lowerArm = img2[int(np.floor(0.5*(top_left3[1]+bottom_right3[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),int(np.ceil(0.5*(top_left[0]+bottom_right[0]))):int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
+
+ret,lowerArmBin = cv2.threshold(lowerArm,127,255,cv2.THRESH_BINARY)
 
 rearArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),int(np.ceil(0.5*(top_left3[0]+bottom_right3[0]))):]
 
-plt.subplot(311)
+ret,rearArmBin = cv2.threshold(rearArm,127,255,cv2.THRESH_BINARY)
+
+plt.subplot(3,2,1)
 plt.imshow(upperArm,cmap = 'gray')
 plt.title('Upper arm')
 plt.xticks([])
 plt.yticks([])
-plt.subplot(312)
+plt.subplot(3,2,2)
+plt.imshow(upperArmBin,cmap = 'gray')
+plt.title('Binarized')
+plt.xticks([])
+plt.yticks([])
+plt.subplot(3,2,3)
 plt.imshow(lowerArm,cmap = 'gray')
 plt.title('Lower arm')
 plt.xticks([])
 plt.yticks([])
-plt.subplot(313)
+plt.subplot(3,2,4)
+plt.imshow(lowerArmBin,cmap = 'gray')
+plt.title('Binarized')
+plt.xticks([])
+plt.yticks([])
+plt.subplot(3,2,5)
 plt.imshow(rearArm,cmap = 'gray')
 plt.title('Rear arm')
+plt.xticks([])
+plt.yticks([])
+plt.subplot(3,2,6)
+plt.imshow(rearArmBin,cmap = 'gray')
+plt.title('Binarized')
 plt.xticks([])
 plt.yticks([])
 
