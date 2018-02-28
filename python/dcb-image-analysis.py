@@ -73,9 +73,9 @@ cv2.rectangle(img,top_left, bottom_right, 255, 4)
 cv2.rectangle(img,top_left2, bottom_right2, 255, 4)
 cv2.rectangle(img,top_left3, bottom_right3, 255, 4)
 
-upperArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left3[1]+bottom_right3[1]))),top_left2[0]:int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
+upperArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left3[1]+bottom_right3[1]))),int(np.floor(0.5*(top_left2[0]+bottom_right2[0]))):int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
 
-lowerArm = img2[int(np.floor(0.5*(top_left3[1]+bottom_right3[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),top_left[0]:int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
+lowerArm = img2[int(np.floor(0.5*(top_left3[1]+bottom_right3[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),int(np.ceil(0.5*(top_left[0]+bottom_right[0]))):int(np.ceil(0.5*(top_left3[0]+bottom_right3[0])))]
 
 rearArm = img2[int(np.floor(0.5*(top_left2[1]+bottom_right2[1]))):int(np.ceil(0.5*(top_left[1]+bottom_right[1]))),int(np.ceil(0.5*(top_left3[0]+bottom_right3[0]))):]
 
