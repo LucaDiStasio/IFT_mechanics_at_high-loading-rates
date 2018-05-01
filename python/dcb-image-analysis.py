@@ -204,5 +204,10 @@ plt.show()
 #ax2.imshow(img2)
 #ax3.imshow(edges, cmap='gray')
 #plt.xticks([]), plt.yticks([])  # to hide tick values on X and Y axis
+<<<<<<< HEAD
+plt.tight_layout()
+plt.show()
+=======
 #plt.tight_layout()
 #plt.show()
+>>>>>>> 89d71fdc407c0f2c6e8e1350f4332cf0d60f002b
